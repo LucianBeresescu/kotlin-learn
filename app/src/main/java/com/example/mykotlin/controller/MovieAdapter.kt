@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -25,18 +26,16 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<Mo
         }
 
         fun bind(movie: Movie) {
-            Log.e("BIND", BuildConfig.ORIGINAL_IMAGE_URL + movie.imagePath)
             mTitleView?.text = movie.title
-            mPosterView?.context?.let {
-                Glide.with(it)
-                        .load(BuildConfig.ORIGINAL_IMAGE_URL + movie.imagePath)
-                        .into(mPosterView!!)
-            }
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val inflater = LayoutInflater.from(parent.context)
+
+        DataBindingUtil.inflate(inflater)
+
         return MovieViewHolder(inflater, parent)
     }
 
