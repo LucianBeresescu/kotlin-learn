@@ -14,14 +14,15 @@ import com.example.mykotlin.R
 import com.example.mykotlin.controller.MovieAdapter
 import com.example.mykotlin.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.movie_fragment.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
+
+    private val viewModel: MovieViewModel by viewModel()
 
     companion object {
         fun newInstance() = MovieFragment()
     }
-
-    private lateinit var viewModel: MovieViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -30,8 +31,6 @@ class MovieFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
-
         Log.e("", viewModel.movieList.toString());
 
         viewModel.movieList.observe(this, Observer {

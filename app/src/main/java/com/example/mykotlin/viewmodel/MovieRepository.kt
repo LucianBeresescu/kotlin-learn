@@ -2,6 +2,7 @@ package com.example.mykotlin.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.mykotlin.di.networkModule
 import com.example.mykotlin.model.Movie
 import com.example.mykotlin.network.RestApiService
 import kotlinx.coroutines.CoroutineScope
@@ -10,13 +11,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 
-class MovieRepository() {
+class MovieRepository(private val thisApiCorService: RestApiService) {
     private var movies = mutableListOf<Movie>()
     private var mutableLiveData = MutableLiveData<List<Movie>>()
-
-    private val thisApiCorService by lazy {
-        RestApiService.createCorService()
-    }
 
     fun getMutableLiveData(): MutableLiveData<List<Movie>> {
         CoroutineScope(Dispatchers.IO).launch {
@@ -39,5 +36,4 @@ class MovieRepository() {
         }
         return mutableLiveData;
     }
-
 }

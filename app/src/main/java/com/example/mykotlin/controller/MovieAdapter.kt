@@ -30,7 +30,6 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<Mo
             mPosterView?.context?.let {
                 Glide.with(it)
                         .load(BuildConfig.ORIGINAL_IMAGE_URL + movie.imagePath)
-//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(mPosterView!!)
             }
         }
@@ -49,7 +48,4 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<Mo
         val movie: Movie = movieList[position]
         holder.bind(movie)
     }
-
-
-
 }
