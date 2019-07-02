@@ -41,7 +41,6 @@ fun provideDefaultOkhttpClient(): OkHttpClient {
 }
 
 fun provideRetrofit(client: OkHttpClient): Retrofit {
-    Log.e("FMM", "MERGEEEEE")
     return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
