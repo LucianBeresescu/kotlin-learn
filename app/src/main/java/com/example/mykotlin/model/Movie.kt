@@ -1,14 +1,28 @@
 package com.example.mykotlin.model
 
-import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Movie (
-        @Json(name = "vote_count") val voteCount: Int = -1,
-        val id: Int,
-        val title: String,
-        @Json(name = "poster_path") val imagePath: String,
-        @Json(name = "genre_ids") val genres: List<Int>,
-        val overview: String
+data class Movie(
+        val id: String,
+        val adult: Boolean? = false,
+        val backdrop_path: String? = null,
+        val budget: Int? = null,
+        val homepage: String? = null,
+        val imdb_id: String? = null,
+        val original_language: String? = null,
+        val original_title: String? = null,
+        val overview: String? = null,
+        val popularity: Double? = null,
+        val poster_path: String? = null,
+        val release_date: String? = null,
+        val revenue: Int? = null,
+        val runtime: Int? = null,
+        val status: String? = null,
+        val tagline: String? = null,
+        val title: String? = null,
+        val video: Boolean? = false,
+        val vote_average: Double? = null,
+        val vote_count: Int? = null,
+        var isFavorite: Boolean? = false
 )

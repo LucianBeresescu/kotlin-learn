@@ -23,7 +23,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:imageUrl="@{item.imagePath}"
+                app:imageUrl="@{item.poster_path}"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/ic_gallery"
                 android:contentDescription="Poster of the movie"/>

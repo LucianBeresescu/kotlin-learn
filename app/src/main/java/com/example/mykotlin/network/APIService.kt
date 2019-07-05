@@ -1,6 +1,6 @@
 package com.example.mykotlin.network
 
-import com.example.mykotlin.model.MovieResponse
+import com.example.mykotlin.model.Movie
 import com.example.mykotlin.model.MovieWrapper
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
@@ -12,4 +12,7 @@ interface RestApiService {
     @GET("3/discover/movie")
     fun getPopularMovieAsync(
             @Query("page") page: Int): Deferred<Response<MovieWrapper>>
+
+    @GET("3/movie/{movie_id}")
+    suspend fun getMovieAsync(): Deferred<Response<Movie>>
 }
