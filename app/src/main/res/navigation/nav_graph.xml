@@ -6,7 +6,7 @@
 
     <fragment
             android:id="@+id/splash"
-            android:name="com.example.mykotlin.screens.Splash"
+            android:name="com.example.mykotlin.screens.Splash.Splash"
             tools:layout="@layout/fragment_splash">
         <action
                 android:id="@+id/splash_to_main"

@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class MovieWrapper (
         @Json(name="results")
-        var blog: MutableList<Movie>? = null,
+        var movies: MutableList<Movie>? = null,
         @Json(name="page")
         var page: Int? = null,
         @Json(name="total_pages")

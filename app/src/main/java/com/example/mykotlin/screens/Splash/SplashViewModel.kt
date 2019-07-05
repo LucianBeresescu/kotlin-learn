@@ -1,4 +1,4 @@
-package com.example.mykotlin.screens
+package com.example.mykotlin.screens.Splash
 
 import androidx.lifecycle.ViewModel;
 

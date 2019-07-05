@@ -1,6 +1,5 @@
 package com.example.mykotlin.di
 
-import android.util.Log
 import com.example.mykotlin.BuildConfig
 import com.example.mykotlin.network.RestApiService
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -31,8 +30,14 @@ fun provideDefaultOkhttpClient(): OkHttpClient {
         val newRequest = chain.request().newBuilder().url(request).build()
         chain.proceed(newRequest)
     }
+
+    val logging = HttpLoggingInterceptor()
+// set your desired log level
+    logging.level = HttpLoggingInterceptor.Level.BODY
+
     return OkHttpClient.Builder()
             .addNetworkInterceptor(interceptor)
+            .addInterceptor(logging)
             .addInterceptor(headerAuthorizationInterceptor)
             .connectTimeout(1, TimeUnit.MINUTES)
             .readTimeout(30, TimeUnit.SECONDS)

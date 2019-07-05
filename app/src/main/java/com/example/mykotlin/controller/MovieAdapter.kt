@@ -2,11 +2,13 @@ package com.example.mykotlin.controller
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mykotlin.databinding.MovieListItemBinding
 import com.example.mykotlin.model.Movie
+import com.example.mykotlin.utils.DiffUtilCallBack
 
-class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter : PagedListAdapter<Movie, MovieAdapter.MovieViewHolder>(DiffUtilCallBack()) {
 
     class MovieViewHolder(val binding: MovieListItemBinding) :
             RecyclerView.ViewHolder(binding.root) {
@@ -23,12 +25,7 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<Mo
         return MovieViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return movieList.size
-    }
-
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie: Movie = movieList[position]
-        holder.bind(movie)
+        getItem(position)?.let{ holder.bind(it)}
     }
 }
