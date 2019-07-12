@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mykotlin.R
 import com.example.mykotlin.controller.MovieAdapter
+import com.example.mykotlin.model.Movie
 import com.example.mykotlin.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.movie_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -17,7 +19,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MovieFragment : Fragment() {
 
     private val viewModel: MovieViewModel by viewModel()
-    private val movieAdapter = MovieAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -27,6 +28,10 @@ class MovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Log.e("", viewModel.movieList.toString())
+
+        val movieAdapter = MovieAdapter(
+                itemClickListener = { toMovieDetails(it) }
+        )
 
         viewModel.movieList.observe(this, Observer {
             movies_list.apply {
@@ -41,4 +46,7 @@ class MovieFragment : Fragment() {
         })
     }
 
+    private fun toMovieDetails(movie: Movie) {
+        findNavController().navigate(R.id.to_movie_detail)
+    }
 }

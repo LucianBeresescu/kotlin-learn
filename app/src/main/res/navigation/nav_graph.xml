@@ -18,6 +18,16 @@
     <fragment
             android:id="@+id/main"
             android:name="com.example.mykotlin.screens.MovieFragment"
-            tools:layout="@layout/activity_main"/>
+            tools:layout="@layout/activity_main">
 
+        <action
+                android:id="@+id/to_movie_detail"
+                app:destination="@id/movie_details"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/movie_details"
+              android:name="com.example.mykotlin.screens.MovieDetails">
+
+    </fragment>
 </navigation>

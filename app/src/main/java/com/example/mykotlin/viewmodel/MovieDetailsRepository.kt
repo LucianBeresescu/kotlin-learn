@@ -14,9 +14,9 @@ class MovieDetailsRepository(private val thisApiCorService: RestApiService) {
 
     private var mutableLiveData = MutableLiveData<Movie>()
 
-    open fun getMovieDetail(): MutableLiveData<Movie> {
+    open fun getMovieDetail(id: String): MutableLiveData<Movie> {
         CoroutineScope(Dispatchers.IO).launch {
-            val request = thisApiCorService.getMovieAsync()
+            val request = thisApiCorService.getMovieAsync(id)
             withContext(Dispatchers.Main) {
                 try {
                     val response = request.await()

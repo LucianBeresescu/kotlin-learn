@@ -12,10 +12,6 @@ import com.example.mykotlin.R
 
 class Splash : Fragment() {
 
-    companion object {
-        fun newInstance() = Splash()
-    }
-
     private lateinit var viewModel: SplashViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
